@@ -1,5 +1,5 @@
 for (var i = 9; i <= 17; i++) {
-  document.getElementById("demo").innerHTML += TimeSlot(i);
+  document.getElementById("grid").innerHTML += TimeSlot(i);
 }
 
 $(document).on("click", ".saveBtn", function() {
@@ -31,3 +31,9 @@ function TimeSlot(hour) {
         </div>
       </div>`;
 }
+
+var Date = "December 17, 1990";
+
+
+
+document.getElementById("currentDay").textContent = Date;
