@@ -32,8 +32,6 @@ function TimeSlot(hour) {
       </div>`;
 }
 
-var Date = "December 17, 1990";
-
-
-
+//Get date to appear on rotating basis
+var Date = moment().format("LL");
 document.getElementById("currentDay").textContent = Date;
