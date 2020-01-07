@@ -23,27 +23,37 @@ $(document).on("click", ".saveBtn", function() {
 function TimeSlot(hour) {
   var dispTime = moment(hour, "H").format("hA");
   var text = localStorage.getItem(dispTime);
+  var pastPresent;
+  var currentTime = moment().hour();
 
-  if (dispTime == 10) {
-    console.log(true);
-  } else if (dispTime == 9) {
-    console.log(false);
+  if (hour < currentTime) {
+    pastPresent = "past";
+  } else if (hour === currentTime) {
+    pastPresent = "present";
+  } else {
+    pastPresent = "future";
   }
 
   return `<div class="row time-block">
-        <div class="col-md-2 hour">${dispTime}</div>
-        <textarea class="col-md-9 decription" data-time="${dispTime}">
+        <div class="col-12 col-md-2 hour">${dispTime}</div>
+        <textarea class="col-10 col-md-9 decription ${pastPresent}" data-time="${dispTime}">
         ${text}
         </textarea>
-        <div class="col-md-1 btn saveBtn">
+        <div class="col-2 col-md-1 btn saveBtn">
           <i class="fas fa-save"></i>
         </div>
       </div>`;
 }
 
+// if (dispTime === 9) {
+//   textarea.attr("class", "col-md-9 decription present");
+// }
+
 //Get date to appear on rotating basis
 var Date = moment().format("LL");
 document.getElementById("currentDay").textContent = Date;
+
+//TRIED AND FAILED
 
 //loop to check the time and see what time it is, then color the spaces appropriately
 
@@ -64,3 +74,9 @@ document.getElementById("currentDay").textContent = Date;
 // };
 
 //if moment().hour() < this_hr then future, if === this_hr then present, if > this_hr then past
+
+//  if ("data-time" == 10) {
+//    console.log(true);
+//  } else if ("data-time" == 9) {
+//    console.log(false);
+//  }
